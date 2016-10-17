@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Cargas</ion-title>
+  </ion-navbar>
+  <ion-toolbar>
+     <ion-segment [(ngModel)]="cargas" color="secondary">
+        <ion-segment-button value="viagem">
+           <ion-icon name="camera"></ion-icon>
+        </ion-segment-button>
+        <ion-segment-button value="aguardando">
+           <ion-icon name="aguardando"></ion-icon>
+        </ion-segment-button>
+     </ion-segment>
+  </ion-toolbar>
+</ion-header>
+<ion-content padding>
+   <div [ngSwitch]="cargas">
+      <div *ngSwitchCase="'viagem'">
+         <div *ngFor="let info of cargasViagem">
+            <ion-card>
+               <ion-card-content>
+                  <p>{{info.transportadora}}
+               </ion-card-content>
+            </ion-card>
+            <ion-card *ngFor="let viagem of info.viagens">
+               <ion-card-content>
+                  <p>{{ viagem.municipio_origem }}</p>
+               </ion-card-content>
+            </ion-card>
+         </div>
+      </div>
+      <div *ngSwitchCase="'aguardando'">
+         <div *ngFor="let info of cargasViagem">
+            <ion-card>
+               <ion-card-content>
+                  <p>{{info.transportadora}}
+               </ion-card-content>
+            </ion-card>
+            <ion-card *ngFor="let viagem of info.viagens">
+               <ion-card-content>
+                  <p>{{ viagem.municipio_origem }}</p>
+               </ion-card-content>
+            </ion-card>
+         </div>
+      </div>
+   </div>
+</ion-content>
