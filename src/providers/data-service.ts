@@ -14,9 +14,9 @@ export class DataService {
       this.http.get('http://private-8d09d-leadtime.apiary-mock.com/cargas/viagem')
         .map(res => res.json())
         .subscribe(data => {
-        this.cargasViagem = data;
-        resolve(this.cargasViagem);
-      }, err => {
+           this.cargasViagem = data;
+           resolve(this.cargasViagem);
+        }, err => {
           console.error(err);
         });
     });

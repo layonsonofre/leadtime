@@ -7,21 +7,20 @@ import { DataService } from '../../providers/data-service';
   providers: [DataService]
 })
 export class Carga {
+  private cargasViagem: any;
   private cargas: any;
 
   constructor(public navCtrl: NavController, private dataService: DataService) {
+     this.cargas = 'c_viagem';
   }
 
   ionViewDidLoad() {
-    console.log('Hello CargaViagem Page');
-    this.loadCargasViagem();
   }
 
   loadCargasViagem() {
-    console.log('loading cargas...');
     this.dataService.loadCargasViagem().then(data => {
-      this.cargas = data;
-      console.log(this.cargas);
+      this.cargasViagem = data[0];
+      console.log(this.cargasViagem);
     });
   }
 
