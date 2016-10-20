@@ -14,9 +14,9 @@
   </ion-toolbar>
 </ion-header>
 <ion-content padding>
-  <div [ngSwitch]="cargas">
+  <div *ngIf="cargasViagem" [ngSwitch]="cargas">
     <div *ngSwitchCase="'c_viagem'">
-      <ion-card *ngFor="let viagem of cargasViagem.viagens">
+      <ion-card  *ngFor="let viagem of cargasViagem.viagens">
         <!-- <img [src]="viagem.transportadora.logo" [alt]="viagem.transportadora.nome_fantasia"> -->
         <ion-card-content>
           <p>{{ viagem.chegada_prevista }}</p>
