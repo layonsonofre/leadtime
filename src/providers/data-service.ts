@@ -21,4 +21,17 @@ export class DataService {
         });
     });
   }
+
+  loadCargasAguardando() {
+    return new Promise(resolve => {
+      this.http.get('http://private-8d09d-leadtime.apiary-mock.com/cargas/aguardando')
+        .map(res => res.json())
+        .subscribe(data => {
+           this.cargasViagem = data;
+           resolve(this.cargasViagem);
+        }, err => {
+          console.error(err);
+        });
+    });
+  }
 }

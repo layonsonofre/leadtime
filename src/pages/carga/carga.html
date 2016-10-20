@@ -14,26 +14,18 @@
   </ion-toolbar>
 </ion-header>
 <ion-content padding>
-  <div *ngIf="cargasViagem" [ngSwitch]="cargas">
+  <div [ngSwitch]="cargas">
     <div *ngSwitchCase="'c_viagem'">
-      <ion-card  *ngFor="let viagem of cargasViagem.viagens">
-        <img style="height: 100%; width: auto;" [src]="viagem.transportadora.logo" [alt]="viagem.transportadora.nome_fantasia">
-        <ion-card-content>
-          <p>{{ viagem.chegada_prevista }}</p>
-          <p>{{ viagem.placa }}</p>
-          <p>{{ viagem.romaneio }}</p>
-        </ion-card-content>
-      </ion-card>
-    </div>
-    <div *ngSwitchCase="'c_aguardando'">
-      <ion-card  *ngFor="let aguardando of cargasViagem.aguardando">
-        <img style="height: 100%; width: auto;" [src]="aguardando.transportadora.logo" [alt]="aguardando.transportadora.nome_fantasia">
-        <ion-card-content>
-          <p>{{ aguardando.tempo_aguardando }}</p>
-          <p>{{ aguardando.placa }}</p>
-          <p>{{ aguardando.romaneio }}</p>
-        </ion-card-content>
-      </ion-card>
+      <div *ngIf="cargasViagem">
+         <ion-card  class="minimized atrasado" *ngFor="let viagem of cargasViagem.viagens">
+           <img [src]="viagem.transportadora.logo" [alt]="viagem.transportadora.nome_fantasia">
+           <ion-card-content>
+             <span class="chegada_prevista">{{ viagem.chegada_prevista }}</span>
+             <span class="placa">{{ viagem.placa }}</span>
+             <span class="romaneio">{{ viagem.romaneio }}</span>
+           </ion-card-content>
+         </ion-card>
+      </div>
     </div>
   </div>
 </ion-content>

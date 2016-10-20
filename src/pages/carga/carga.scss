@@ -1,3 +1,34 @@
-page-carga {
-
+carga {
+  div.scroll-content {
+    background-color: "#123123";
+  }
+  ion-card {
+    padding: 5px;
+    .minimized {
+      max-height: 50px;
+      display: flex;
+    }
+    .atrasado {
+      background-color: #123132;
+    }
+    .previsto {
+      background-color: #878771;
+    }
+    img {
+      max-width: 40%;
+      float: left;
+    }
+    ion-card-content {
+      position: relative;
+      float: right;
+      .placa {
+         position: absolute;
+         left: 0;
+      }
+      .romaneio {
+         position: absolute;
+         right: 0;
+      }
+    }
+  }
 }

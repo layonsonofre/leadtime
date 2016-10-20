@@ -4,6 +4,7 @@ import { DataService } from '../../providers/data-service';
 
 @Component({
   templateUrl: 'carga.html',
+  selector: 'carga',
   providers: [DataService]
 })
 export class Carga {
@@ -12,12 +13,11 @@ export class Carga {
   private cargas: any;
 
   constructor(public navCtrl: NavController, private dataService: DataService) {
-     //this.cargas = 'c_viagem';
+     this.cargas = 'c_viagem';
   }
 
   ionViewDidLoad() {
-    loadCargasViagem();
-    //loadCargasAguardando();
+    this.loadCargasViagem();
   }
 
   loadCargasViagem() {
