@@ -3,7 +3,7 @@
     <ion-title>Cargas</ion-title>
   </ion-navbar>
   <ion-toolbar>
-    <ion-segment [(ngModel)]="cargas" color="secondary">
+    <ion-segment [(ngModel)]="cargas">
       <ion-segment-button value="c_viagem" (click)="loadCargasViagem()">
         Viagem
       </ion-segment-button>
@@ -17,14 +17,16 @@
   <div [ngSwitch]="cargas">
     <div *ngSwitchCase="'c_viagem'">
       <div *ngIf="cargasViagem">
-         <ion-card  class="minimized atrasado" *ngFor="let viagem of cargasViagem.viagens">
-           <img [src]="viagem.transportadora.logo" [alt]="viagem.transportadora.nome_fantasia">
-           <ion-card-content>
-             <span class="chegada_prevista">{{ viagem.chegada_prevista }}</span>
-             <span class="placa">{{ viagem.placa }}</span>
-             <span class="romaneio">{{ viagem.romaneio }}</span>
-           </ion-card-content>
-         </ion-card>
+        <ion-card class="minimized" *ngFor="let viagem of cargasViagem.viagens" [ngClass]="viagem.status == 'ATRASADO' ? 'atrasado' : 'previsto'">
+          <div class="logo">
+            <img [src]="viagem.transportadora.logo" [alt]="viagem.transportadora.nome_fantasia">
+          </div>
+          <ion-card-content>
+            <span class="chegada-prevista">{{ viagem.chegada_prevista }}</span>
+            <span class="placa">{{ viagem.placa }}</span>
+            <span class="romaneio">{{ viagem.romaneio }}</span>
+          </ion-card-content>
+        </ion-card>
       </div>
     </div>
   </div>

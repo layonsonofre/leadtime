@@ -1,34 +1,66 @@
 carga {
-  div.scroll-content {
-    background-color: "#123123";
+  .atrasado {
+    background-color: map-get($colors, atrasado)!important;
+    // box-shadow: inset 0 0 20px map-get($colors, atrasado);
   }
+  .previsto {
+    background-color: map-get($colors, previsto)!important;
+    // box-shadow: inset 0 0 20px map-get($colors, previsto);
+  }
+
   ion-card {
-    padding: 5px;
+    padding: 0 !important;
     .minimized {
       max-height: 50px;
       display: flex;
     }
-    .atrasado {
-      background-color: #123132;
+    .maximized {
+      height: 250px;
     }
-    .previsto {
-      background-color: #878771;
-    }
-    img {
-      max-width: 40%;
+    .logo {
+      width: 40%;
       float: left;
+      overflow: hidden;
+      background-color: #fff;
+      box-shadow: 2px 0 15px #333;
+      padding: 10px;
+      img {
+        width: 100%;
+        margin: 0 auto;
+      }
     }
-    ion-card-content {
+    #watermark {
+      position: relative;
+      left: 40%;
+      opacity: 0.8;
+    }
+  }
+  ion-card-content {
+    width: 60%!important;
+    padding: 5px;
+    position: relative;
+    float: right;
+    font-weight: bolder;
+    vertical-align: middle;
+    text-align: center;
+    .chegada-prevista {
+      position: relative;
+      display: block;
+      margin: 0 auto;
+      top: 20%;
+      width: 100%;
+    }
+    .placa {
+      position: relative;
+      float: left;
+      width: 50%;
+      top: 70%;
+    }
+    .romaneio {
       position: relative;
       float: right;
-      .placa {
-         position: absolute;
-         left: 0;
-      }
-      .romaneio {
-         position: absolute;
-         right: 0;
-      }
+      width: 50%;
+      top: 70%;
     }
   }
 }

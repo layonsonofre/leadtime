@@ -13,7 +13,7 @@ export class Carga {
   private cargas: any;
 
   constructor(public navCtrl: NavController, private dataService: DataService) {
-     this.cargas = 'c_viagem';
+    this.cargas = 'c_viagem';
   }
 
   ionViewDidLoad() {
@@ -23,7 +23,7 @@ export class Carga {
   loadCargasViagem() {
     this.cargas = 'c_viagem';
     this.dataService.loadCargasViagem().then(data => {
-    this.cargasViagem = data[0];
+      this.cargasViagem = data[0];
 
       console.log("Cargas Viagem: ");
       console.log(this.cargasViagem);
@@ -33,11 +33,10 @@ export class Carga {
   loadCargasAguardando() {
     this.cargas = 'c_aguardando';
     this.dataService.loadCargasAguardando().then(data => {
-    this.cargasAguardando = data[0];
+      this.cargasAguardando = data[0];
 
       console.log("Cargas aguardando: ");
       console.log(this.cargasAguardando);
     });
   }
-
 }
