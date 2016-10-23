@@ -1,66 +1,68 @@
+@import '../../theme/icons';
+
 carga {
   .atrasado {
     background-color: map-get($colors, atrasado)!important;
-    // box-shadow: inset 0 0 20px map-get($colors, atrasado);
   }
   .previsto {
     background-color: map-get($colors, previsto)!important;
-    // box-shadow: inset 0 0 20px map-get($colors, previsto);
   }
-
   ion-card {
     padding: 0 !important;
-    .minimized {
-      max-height: 50px;
-      display: flex;
-    }
-    .maximized {
-      height: 250px;
-    }
+    display: flex;
     .logo {
       width: 40%;
+      height: inherit;
       float: left;
       overflow: hidden;
       background-color: #fff;
-      box-shadow: 2px 0 15px #333;
-      padding: 10px;
-      img {
-        width: 100%;
-        margin: 0 auto;
-      }
-    }
-    #watermark {
-      position: relative;
-      left: 40%;
-      opacity: 0.8;
+      box-shadow: 2px 0 15px rgba(0, 0, 0, 0.4);
+      padding: 5px;
+      vertical-align: middle;
     }
   }
   ion-card-content {
     width: 60%!important;
-    padding: 5px;
+    padding: 5px 5px 5px 10px !important;
     position: relative;
     float: right;
-    font-weight: bolder;
-    vertical-align: middle;
-    text-align: center;
-    .chegada-prevista {
-      position: relative;
+    font-weight: bold;
+    vertical-align: top;
+    font-size: 0.8rem!important;
+  }
+  .info {
+    position: relative;
+    &.chegada-prevista {
       display: block;
-      margin: 0 auto;
-      top: 20%;
+      top: 0;
       width: 100%;
+      @include icon-chegada-prevista;
     }
-    .placa {
-      position: relative;
+    &.placa {
       float: left;
       width: 50%;
-      top: 70%;
+      @include icon-chegada-prevista;
     }
-    .romaneio {
-      position: relative;
+    &.romaneio {
       float: right;
       width: 50%;
-      top: 70%;
+      @include icon-chegada-prevista;
     }
+  }
+  .help-text {
+    position: relative;
+    display: block;
+    font-size: 0.6em;
+  }
+  .watermark {
+    // position: relative;
+    // left: 40%;
+    // top: 40%;
+    z-index: 99;
+    opacity: 0.5;
+    background-image: url('http://www.iconsfind.com/wp-content/uploads/2015/10/20151012_561baa0a494b8.png');
+    background-repeat: no-repeat;
+    // background-position: 0 0;
+    background-size: cover;
   }
 }

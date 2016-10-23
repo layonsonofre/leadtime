@@ -1,0 +1,10 @@
+.help-icon {
+  padding-left: 20px;
+  background-repeat: no-repeat;
+  background-position: left;
+  background-size: 16px 16px;
+}
+@mixin icon-chegada-prevista {
+   @extend .help-icon;
+  background-image: url('http://www.iconsfind.com/wp-content/uploads/2015/10/20151012_561baa0a494b8.png');
+}

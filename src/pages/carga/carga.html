@@ -17,16 +17,27 @@
   <div [ngSwitch]="cargas">
     <div *ngSwitchCase="'c_viagem'">
       <div *ngIf="cargasViagem">
-        <ion-card class="minimized" *ngFor="let viagem of cargasViagem.viagens" [ngClass]="viagem.status == 'ATRASADO' ? 'atrasado' : 'previsto'">
-          <div class="logo">
-            <img [src]="viagem.transportadora.logo" [alt]="viagem.transportadora.nome_fantasia">
-          </div>
-          <ion-card-content>
-            <span class="chegada-prevista">{{ viagem.chegada_prevista }}</span>
-            <span class="placa">{{ viagem.placa }}</span>
-            <span class="romaneio">{{ viagem.romaneio }}</span>
-          </ion-card-content>
-        </ion-card>
+        <div *ngFor="let viagem of cargasViagem.viagens">
+          <ion-card [ngClass]="viagem.status == 'ATRASADO' ? 'atrasado' : 'previsto'">
+
+            <div class="logo" [ngStyle]="{'background': 'url(' + viagem.transportadora.logo + ') no-repeat center #FFFFFF'}"></div>
+            <ion-card-content>
+              <div class="watermark"></div>
+              <div class="info chegada-prevista">
+                {{ viagem.chegada_prevista }}
+                <div class="help-text">Chegada prevista</div>
+              </div>
+              <div class="info placa">
+                {{ viagem.placa }}
+                <div class="help-text">Placa</div>
+              </div>
+              <div class="info romaneio">
+                {{ viagem.romaneio }}
+                <div class="help-text">Romaneio</div>
+              </div>
+            </ion-card-content>
+          </ion-card>
+        </div>
       </div>
     </div>
   </div>

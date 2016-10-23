@@ -10,7 +10,7 @@ import { DataService } from '../../providers/data-service';
 export class Carga {
   private cargasViagem: any;
   private cargasAguardando: any;
-  private cargas: any;
+  public cargas: any;
 
   constructor(public navCtrl: NavController, private dataService: DataService) {
     this.cargas = 'c_viagem';
