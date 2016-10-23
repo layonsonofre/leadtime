@@ -7,6 +7,7 @@
 }
 
 @keyframes grow {
-  0% { -webkit-transform: scaleY(0); transform: scaleY(0); }
+  0% { -webkit-transform: scaleY(1); transform: scaleY(1); }
+  70% { -webkit-transform: scaleY(1.2); transform: scaleY(1.2); }
   100% { -webkit-transform: scaleY(1); transform: scaleY(1); }
 }

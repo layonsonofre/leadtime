@@ -63,23 +63,43 @@ carga {
       }
     }
     &.chegada-prevista {
-      @include icon-chegada-prevista;
+      @include icon-agenda-white;
     }
     &.placa {
-      @include icon-chegada-prevista;
+      @include icon-caminhao-white;
     }
     &.romaneio {
-      @include icon-chegada-prevista;
+      @include icon-rodovia-white;
+    }
+    &.destino {
+      @include icon-destino-white;
+    }
+    &.mercadoria {
+      @include icon-mercadoria-white;
+    }
+    &.origem {
+      @include icon-origem-white;
+    }
+    &.pessoa {
+      @include icon-pessoa-white;
+    }
+    &.tempo {
+      @include icon-relogio-white;
+    }
+    &.telefone {
+      @include icon-telefone-white;
     }
   }
   .help-text {
     position: relative;
     display: block;
     font-size: 0.6em;
+    opacity: 0.5;
   }
   .detailed {
     height: 100%;
-    @include animation(grow 300ms cubic-bezier(0, 0.45, 0.30, 2.4));
+    @include animation(grow 300ms ease-in-out);
+    // @include animation(grow 300ms cubic-bezier(0, 0.45, 0.30, 2.4));
 
     color: map-get($colors, dark);
     .minimized-info {
@@ -99,6 +119,35 @@ carga {
     }
     &.previsto {
       @extend .previsto-border;
+    }
+    .info {
+      &.chegada-prevista {
+        @include icon-agenda-black;
+      }
+      &.placa {
+        @include icon-caminhao-black;
+      }
+      &.romaneio {
+        @include icon-rodovia-black;
+      }
+      &.destino {
+        @include icon-destino-black;
+      }
+      &.mercadoria {
+        @include icon-mercadoria-black;
+      }
+      &.origem {
+        @include icon-origem-black;
+      }
+      &.pessoa {
+        @include icon-pessoa-black;
+      }
+      &.tempo {
+        @include icon-relogio-black;
+      }
+      &.telefone {
+        @include icon-telefone-black;
+      }
     }
   }
 }
