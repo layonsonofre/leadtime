@@ -11,6 +11,8 @@ export class Carga {
   private cargasViagem: any;
   private cargasAguardando: any;
   public cargas: any;
+  public detailedViagem: Array<boolean> = [];
+  public detailedAguardando: Array<boolean> = [];
 
   constructor(public navCtrl: NavController, private dataService: DataService) {
     this.cargas = 'c_viagem';
@@ -24,9 +26,10 @@ export class Carga {
     this.cargas = 'c_viagem';
     this.dataService.loadCargasViagem().then(data => {
       this.cargasViagem = data[0];
-
-      console.log("Cargas Viagem: ");
-      console.log(this.cargasViagem);
+      for (let i = 0; i < this.cargasViagem.viagens.length; i++) {
+          this.detailedViagem[i] = false;
+      }
+      console.log(this.cargasViagem.viagens);
     });
   }
 
@@ -34,9 +37,10 @@ export class Carga {
     this.cargas = 'c_aguardando';
     this.dataService.loadCargasAguardando().then(data => {
       this.cargasAguardando = data[0];
-
-      console.log("Cargas aguardando: ");
-      console.log(this.cargasAguardando);
+      for (let i = 0; i < this.cargasAguardando.viagens.length; i++) {
+          this.detailedAguardando[i] = false;
+      }
+      console.log(this.cargasAguardando.viagens);
     });
   }
 }

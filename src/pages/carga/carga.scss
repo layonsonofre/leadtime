@@ -1,11 +1,21 @@
 @import '../../theme/icons';
-
+@import '../../theme/animations';
 carga {
   .atrasado {
+    @include card-background;
     background-color: map-get($colors, atrasado)!important;
   }
   .previsto {
+    @include card-background;
     background-color: map-get($colors, previsto)!important;
+  }
+  .atrasado-border {
+    background-color: #FFF!important;
+    border-left: 4px solid map-get($colors, atrasado);
+  }
+  .previsto-border {
+    background-color: #FFF!important;
+    border-left: 4px solid map-get($colors, previsto);
   }
   ion-card {
     padding: 0 !important;
@@ -26,26 +36,39 @@ carga {
     padding: 5px 5px 5px 10px !important;
     position: relative;
     float: right;
-    font-weight: bold;
+    font-weight: bolder;
     vertical-align: top;
     font-size: 0.8rem!important;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+    .minimized-info {
+      display: block;
+    }
+    .detailed-info {
+      display: none;
+    }
   }
   .info {
     position: relative;
-    &.chegada-prevista {
+    &.full {
       display: block;
-      top: 0;
       width: 100%;
+    }
+    &.half {
+      width: 50%;
+      &.left {
+        float: left;
+      }
+      &.right {
+        float: right;
+      }
+    }
+    &.chegada-prevista {
       @include icon-chegada-prevista;
     }
     &.placa {
-      float: left;
-      width: 50%;
       @include icon-chegada-prevista;
     }
     &.romaneio {
-      float: right;
-      width: 50%;
       @include icon-chegada-prevista;
     }
   }
@@ -54,15 +77,28 @@ carga {
     display: block;
     font-size: 0.6em;
   }
-  .watermark {
-    // position: relative;
-    // left: 40%;
-    // top: 40%;
-    z-index: 99;
-    opacity: 0.5;
-    background-image: url('http://www.iconsfind.com/wp-content/uploads/2015/10/20151012_561baa0a494b8.png');
-    background-repeat: no-repeat;
-    // background-position: 0 0;
-    background-size: cover;
+  .detailed {
+    height: 100%;
+    @include animation(grow 300ms cubic-bezier(0, 0.45, 0.30, 2.4));
+
+    color: map-get($colors, dark);
+    .minimized-info {
+      display: none;
+    }
+    ion-card-content {
+      width: 100%!important;
+    }
+    .detailed-info {
+      display: block;
+    }
+    .logo {
+      display: none;
+    }
+    &.atrasado {
+      @extend .atrasado-border;
+    }
+    &.previsto {
+      @extend .previsto-border;
+    }
   }
 }
