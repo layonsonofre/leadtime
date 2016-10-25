@@ -43,7 +43,7 @@ export class DataService {
         .map(res => res.json())
         .subscribe(data => {
            this.indicadoresHome = data;
-           console.log(this.indicadoresHome);
+           //console.log(this.indicadoresHome);
            resolve(this.indicadoresHome);
         }, err => {
           console.error(err);
