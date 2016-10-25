@@ -1,12 +1,73 @@
 <ion-header>
-
-  <ion-navbar>
-    <ion-title>home</ion-title>
+  <ion-navbar color="dark">
+    <ion-title>LeadTime</ion-title>
   </ion-navbar>
-
+  <!-- <ion-toolbar>
+    <ion-segment [(ngModel)]="cargas">
+      <ion-segment-button value="c_viagem" (click)="loadCargasViagem()">
+        Opção 1
+      </ion-segment-button>
+      <ion-segment-button value="c_aguardando" (click)="loadCargasAguardando()">
+        Opção 2
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar> -->
 </ion-header>
-
-
 <ion-content padding>
-
+<!--
+        <div *ngFor="let indicador of indicadoresHome.indicadores, let i = index" class="card-wrapper">
+          <ion-card [ngClass]="">
+            <div class="logo" [ngStyle]=""></div>
+            <ion-card-content>
+              <div class="minimized-info">
+                <div class="info full chegada-prevista">
+                  {{ indicador.carga }}
+                  <div class="help-text">Cargas</div>
+                </div>
+                <div class="info half left placa">
+                  {{ indicador.aguardando }}
+                  <div class="help-text">Aguardando</div>
+                </div>
+                <div class="info half right romaneio">
+                  {{ indicador.transit }}
+                  <div class="help-text">em Transit Time</div>
+                </div>
+              </div>
+              <!-- <div class="detailed-info">
+                <div class="info half left placa">
+                  {{ viagem.transportadora.nome_fantasia }}
+                  <div class="help-text">Transportadora</div>
+                </div>
+                <div class="info half right chegada-prevista">
+                  {{ viagem.chegada_prevista }}
+                  <div class="help-text">Chegada prevista</div>
+                </div>
+                <div class="info half left placa">
+                  {{ viagem.placa }}
+                  <div class="help-text">Placa</div>
+                </div>
+                <div class="info half right romaneio">
+                  {{ viagem.romaneio }}
+                  <div class="help-text">Romaneio</div>
+                </div>
+                <div class="info half left mercadoria">
+                  {{ viagem.mercadoria }}
+                  <div class="help-text">Mercadoria</div>
+                </div>
+                <div class="info half right pessoa">
+                  {{ viagem.motorista }}
+                  <div class="help-text">Motorista</div>
+                </div>
+                <div class="info half left origem">
+                  {{ viagem.municipio_origem }}
+                  <div class="help-text">Origem</div>
+                </div>
+                <div class="info half right destino">
+                  {{ viagem.municipio_destino }}
+                  <div class="help-text">Destino</div>
+                </div>
+              </div> -->
+            <!--</ion-card-content>
+          </ion-card>
+        </div> -->
 </ion-content>

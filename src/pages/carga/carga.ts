@@ -7,6 +7,7 @@ import { DataService } from '../../providers/data-service';
   selector: 'carga',
   providers: [DataService]
 })
+
 export class Carga {
   private cargasViagem: any;
   private cargasAguardando: any;
