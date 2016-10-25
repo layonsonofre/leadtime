@@ -1,20 +1,39 @@
-import { Component } from '@angular/core';
-import { Platform } from 'ionic-angular';
-import { StatusBar } from 'ionic-native';
+import { Component, ViewChild } from '@angular/core';
+import { Nav, Platform } from 'ionic-angular';
+import { StatusBar, Splashscreen } from 'ionic-native';
 
 import { Carga } from '../pages/carga/carga';
 import { Home } from '../pages/home/home';
 
 @Component({
-  template: `<ion-nav [root]="rootPage"></ion-nav>`
+  templateUrl: 'app.html'
 })
 export class MyApp {
-  //rootPage = Carga;
-  rootPage = Home;
+  @ViewChild(Nav) nav: Nav;
+  rootPage: any = Home;
+  pages: Array<{title: string, component: any}>;
 
-  constructor(platform: Platform) {
-    platform.ready().then(() => {
+  constructor(public platform: Platform) {
+    this.initializeApp();
+
+    this.pages = [
+      { title: 'Início', component: Home },
+      { title: 'Carga', component: Carga }
+    ];
+  }
+
+  initializeApp() {
+    this.platform.ready().then(() => {
       StatusBar.styleDefault();
+      Splashscreen.hide();
     });
   }
+
+  openPage(page) {
+    this.nav.setRoot(page.component);
+  }
+
+  // openPage(page) {
+  //   this.nav.push(page);
+  // }
 }
