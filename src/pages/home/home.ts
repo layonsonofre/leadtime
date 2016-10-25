@@ -24,6 +24,7 @@ export class Home {
 
   }
 
+
   ionViewDidLoad() {
     this.loadDadosHome();
   }
