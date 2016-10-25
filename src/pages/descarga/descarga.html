@@ -1,0 +1,143 @@
+<ion-header>
+  <ion-navbar color="dark">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Cargas</ion-title>
+  </ion-navbar>
+  <ion-toolbar>
+    <ion-segment [(ngModel)]="descargas">
+      <ion-segment-button value="d_previsao" (click)="loadDescargasPrevisao()">
+        Viagem
+      </ion-segment-button>
+      <ion-segment-button value="d_tempo" (click)="loadDescargasTempo()">
+        Aguardando
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+</ion-header>
+<ion-content padding>
+  <div [ngSwitch]="descargas">
+    <div *ngSwitchCase="'d_previsao'">
+      <div *ngIf="descargasPrevisao">
+        <div *ngFor="let viagem of descargasPrevisao.previsao, let i = index" class="card-wrapper">
+          <ion-card [ngClass]="viagem.status == 'ATRASADO' ? 'atrasado' : 'previsto'" (click)="detailedViagem[i] = !detailedViagem[i]" [class.detailed]="detailedViagem[i]">
+            <div class="logo" [ngStyle]="{'background': 'url(' + viagem.transportadora.logo + ') no-repeat center #FFFFFF'}"></div>
+            <ion-card-content>
+              <div class="minimized-info">
+                <div class="info full chegada-prevista">
+                  {{ viagem.chegada_prevista }}
+                  <div class="help-text">Chegada prevista</div>
+                </div>
+                <div class="info half left placa">
+                  {{ viagem.placa }}
+                  <div class="help-text">Placa</div>
+                </div>
+                <div class="info half right romaneio">
+                  {{ viagem.romaneio }}
+                  <div class="help-text">Romaneio</div>
+                </div>
+              </div>
+              <div class="detailed-info">
+                <div class="info half left placa">
+                  {{ viagem.transportadora.nome_fantasia }}
+                  <div class="help-text">Transportadora</div>
+                </div>
+                <div class="info half right chegada-prevista">
+                  {{ viagem.chegada_prevista }}
+                  <div class="help-text">Chegada prevista</div>
+                </div>
+                <div class="info half left placa">
+                  {{ viagem.placa }}
+                  <div class="help-text">Placa</div>
+                </div>
+                <div class="info half right romaneio">
+                  {{ viagem.romaneio }}
+                  <div class="help-text">Romaneio</div>
+                </div>
+                <div class="info half left mercadoria">
+                  {{ viagem.mercadoria }}
+                  <div class="help-text">Mercadoria</div>
+                </div>
+                <div class="info half right pessoa">
+                  {{ viagem.motorista }}
+                  <div class="help-text">Motorista</div>
+                </div>
+                <div class="info half left origem">
+                  {{ viagem.municipio_origem }}
+                  <div class="help-text">Origem</div>
+                </div>
+                <div class="info half right destino">
+                  {{ viagem.municipio_destino }}
+                  <div class="help-text">Destino</div>
+                </div>
+              </div>
+            </ion-card-content>
+          </ion-card>
+        </div>
+      </div>
+    </div>
+
+    <!-- AGUARDANDO -->
+    <div *ngSwitchCase="'d_tempo'">
+      <div *ngIf="descargasTempo">
+        <div *ngFor="let viagem of descargasTempo.tempo, let i = index" class="card-wrapper">
+          <ion-card [ngClass]="viagem.status == 'ATRASADO' ? 'atrasado' : 'previsto'" (click)="detailedAguardando[i] = !detailedAguardando[i]" [class.detailed]="detailedAguardando[i]">
+            <div class="logo" [ngStyle]="{'background': 'url(' + viagem.transportadora.logo + ') no-repeat center #FFFFFF'}"></div>
+            <ion-card-content>
+              <div class="minimized-info">
+                <div class="info full chegada-prevista">
+                  {{ viagem.chegada_prevista }}
+                  <div class="help-text">Chegada prevista</div>
+                </div>
+                <div class="info half left placa">
+                  {{ viagem.placa }}
+                  <div class="help-text">Placa</div>
+                </div>
+                <div class="info half right romaneio">
+                  {{ viagem.romaneio }}
+                  <div class="help-text">Romaneio</div>
+                </div>
+              </div>
+              <div class="detailed-info">
+                <div class="info half left placa">
+                  {{ viagem.transportadora.nome_fantasia }}
+                  <div class="help-text">Transportadora</div>
+                </div>
+                <div class="info half right chegada-prevista">
+                  {{ viagem.chegada_prevista }}
+                  <div class="help-text">Chegada prevista</div>
+                </div>
+                <div class="info half left placa">
+                  {{ viagem.placa }}
+                  <div class="help-text">Placa</div>
+                </div>
+                <div class="info half right romaneio">
+                  {{ viagem.romaneio }}
+                  <div class="help-text">Romaneio</div>
+                </div>
+                <div class="info half left mercadoria">
+                  {{ viagem.mercadoria }}
+                  <div class="help-text">Mercadoria</div>
+                </div>
+                <div class="info half right pessoa">
+                  {{ viagem.motorista }}
+                  <div class="help-text">Motorista</div>
+                </div>
+                <div class="info half left origem">
+                  {{ viagem.municipio_origem }}
+                  <div class="help-text">Origem</div>
+                </div>
+                <div class="info half right destino">
+                  {{ viagem.municipio_destino }}
+                  <div class="help-text">Destino</div>
+                </div>
+              </div>
+            </ion-card-content>
+          </ion-card>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</ion-content>

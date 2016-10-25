@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { DataService } from '../../providers/data-service';
-//import { Carga } from '../pages/carga/carga';
+import { Carga } from '../carga/carga';
+import { Descarga } from '../descarga/descarga';
+import { TransitTime } from '../transitTime/transitTime';
 
 /*
   Generated class for the Home page.
@@ -19,8 +21,8 @@ import { DataService } from '../../providers/data-service';
 export class Home {
 
   public home: any;
-  private indicadoresHome: any;
-  private indicadores : any;
+  public indicadoresHome: any;
+  public indicadores : any;
 
   constructor(public navCtrl: NavController, private dataService: DataService) {
 
@@ -37,9 +39,19 @@ export class Home {
   }
   */
 
-  public gotoAusencia() {
+  public gotoCarga() {
     console.log("entrwei");
-  //  this.navCtrl.push(Carga);
+    this.navCtrl.push(Carga);
+  }
+
+  public gotoDescarga() {
+    console.log("entrwei");
+    this.navCtrl.push(Descarga);
+  }
+
+  public gotoTransitTime() {
+    console.log("entrwei");
+    this.navCtrl.push(TransitTime);
   }
 
   loadDadosHome() {
@@ -47,8 +59,13 @@ export class Home {
     this.dataService.loadDadosHome().then(data => {
       this.indicadoresHome = data[0];
 
+      console.log("Indicadores:");
+      console.log(this.indicadoresHome);
 
-      //this.indicadores['cargas'] = 'A'; //this.indicadoresHome.indicadores[0].carga.quantidade;
+
+
+
+      //this.indicadores['cargas'] = this.indicadoresHome.indicadores[0].carga.quantidade;
       //this.indicadores['aguardando'] = 'B'; //this.indicadoresHome.indicadores[0].aguardando.quantidade;
       //this.indicadores['transit'] = 'C'; //this.indicadoresHome.indicadores[0].transit.quantidade;
 

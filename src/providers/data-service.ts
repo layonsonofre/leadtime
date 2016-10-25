@@ -5,12 +5,16 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class DataService {
   public cargasViagem: any;
+  public descargasPrevisao: any;
   public indicadoresHome: any;
 
   constructor(public http: Http) {
 
   }
 
+  /*
+  * INICIO DO BLOCO DE CARGA
+  */
   loadCargasViagem() {
     return new Promise(resolve => {
       this.http.get('http://private-8d09d-leadtime.apiary-mock.com/cargas/viagem')
@@ -36,6 +40,44 @@ export class DataService {
         });
     });
   }
+  /*
+  * FIM DO BLOCO DE CARGA
+  */
+
+  /*
+  * INICIO DO BLOCO DE DESCARGA
+  */
+  loadDescargasPrevisao() {
+    return new Promise(resolve => {
+      this.http.get('http://private-8d09d-leadtime.apiary-mock.com/descargas/previsao')
+        .map(res => res.json())
+        .subscribe(data => {
+           this.descargasPrevisao = data;
+           resolve(this.descargasPrevisao);
+        }, err => {
+          console.error(err);
+        });
+    });
+  }
+
+  loadDescargasTempo() {
+    return new Promise(resolve => {
+      this.http.get('http://private-8d09d-leadtime.apiary-mock.com/descargas/tempo')
+        .map(res => res.json())
+        .subscribe(data => {
+           this.descargasPrevisao = data;
+           resolve(this.descargasPrevisao);
+        }, err => {
+          console.error(err);
+        });
+    });
+  }
+
+  /*
+  * FIM DO BLOCO DE DESCARGA
+  */
+
+
 
   loadDadosHome() {
     return new Promise(resolve => {

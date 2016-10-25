@@ -3,7 +3,9 @@ import { Nav, Platform } from 'ionic-angular';
 import { StatusBar, Splashscreen } from 'ionic-native';
 
 import { Carga } from '../pages/carga/carga';
+import { Descarga } from '../pages/descarga/descarga';
 import { Home } from '../pages/home/home';
+import { TransitTime } from '../pages/transitTime/transitTime';
 
 @Component({
   templateUrl: 'app.html'
@@ -18,7 +20,9 @@ export class MyApp {
 
     this.pages = [
       { title: 'Início', component: Home },
-      { title: 'Carga', component: Carga }
+      { title: 'Carga', component: Carga },
+      { title: 'Descarga', component: Descarga },
+      { title: 'Transit Time', component: TransitTime }
     ];
   }
 
