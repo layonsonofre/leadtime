@@ -1,6 +1,6 @@
 @import '../../theme/icons';
 @import '../../theme/animations';
-descarga {
+login {
   .atrasado {
     @include card-background;
     background-color: map-get($colors, atrasado)!important;
