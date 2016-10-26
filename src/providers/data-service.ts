@@ -5,6 +5,7 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class DataService {
   public cargasViagem: any;
+  public transitTime: any;
   public descargasPrevisao: any;
   public indicadoresHome: any;
 
@@ -77,7 +78,24 @@ export class DataService {
   * FIM DO BLOCO DE DESCARGA
   */
 
-
+  /*
+  * INICIO DO BLOCO DE TRANSIT TIME
+  */
+  loadTransitTime() {
+    return new Promise(resolve => {
+      this.http.get('http://private-8d09d-leadtime.apiary-mock.com/transit/transitTime')
+        .map(res => res.json())
+        .subscribe(data => {
+           this.transitTime = data;
+           resolve(this.transitTime);
+        }, err => {
+          console.error(err);
+        });
+    });
+  }
+  /*
+  * FIM DO BLOCO DE TRANSIT TIME
+  */
 
   loadDadosHome() {
     return new Promise(resolve => {
