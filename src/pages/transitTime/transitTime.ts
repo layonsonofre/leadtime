@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController } from 'ionic-angular';
 import { DataService } from '../../providers/data-service';
 
 @Component({
@@ -9,7 +9,7 @@ import { DataService } from '../../providers/data-service';
 })
 
 export class TransitTime {
-  private transitTime: any;
+  public transitTime: any;
   public detailedViagem: Array<boolean> = [];
 
   constructor(public navCtrl: NavController, private dataService: DataService) {

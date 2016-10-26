@@ -1,5 +1,7 @@
 @import '../../theme/icons';
 @import '../../theme/animations';
+@import '../carga/carga';
+
 transitTime {
   .atrasado {
     @include card-background;
