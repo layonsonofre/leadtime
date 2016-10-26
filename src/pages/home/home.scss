@@ -1,3 +1,52 @@
 home {
+  .indicador-carga {
+    @include card-background;
+    background-color: map-get($colors, indicadorCarga)!important;
+  }
+
+  .indicador-descarga {
+    @include card-background;
+    background-color: map-get($colors, indicadorDescarga)!important;
+  }
+
+  .indicador-transit {
+    @include card-background;
+    background-color: map-get($colors, indicadorTransitTime)!important;
+  }
+
+  .caminhao {
+    @include icon-caminhao-black;
+  }
+
+  ion-card {
+    padding: 0 !important;
+    display: flex;
+    .logo {
+      width: 40%;
+      height: inherit;
+      float: left;
+      overflow: hidden;
+      background-color: #fff;
+      box-shadow: 2px 0 15px rgba(0, 0, 0, 0.4);
+      padding: 5px;
+      vertical-align: middle;
+    }
+  }
+  ion-card-content {
+    width: 60%!important;
+    padding: 5px 5px 5px 10px !important;
+    position: relative;
+    float: right;
+    font-weight: bolder;
+    vertical-align: top;
+    font-size: 1.2rem!important;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+    .minimized-info {
+      display: block;
+    }
+    .detailed-info {
+      display: none;
+    }
+  }
 
 }

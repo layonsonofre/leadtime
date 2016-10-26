@@ -6,13 +6,15 @@ import { Carga } from '../pages/carga/carga';
 import { Descarga } from '../pages/descarga/descarga';
 import { Home } from '../pages/home/home';
 import { TransitTime } from '../pages/transitTime/transitTime';
+import { Login } from '../pages/login/login';
 
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
-  rootPage: any = Home;
+  //rootPage: any = Home;
+  rootPage: any = Login;
   pages: Array<{title: string, component: any}>;
 
   constructor(public platform: Platform) {

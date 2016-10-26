@@ -1,8 +1,6 @@
 @import '../../theme/icons';
 @import '../../theme/animations';
-@import '../carga/carga';
-/*
-descarga {
+login {
   .atrasado {
     @include card-background;
     background-color: map-get($colors, atrasado)!important;
@@ -153,4 +151,3 @@ descarga {
     }
   }
 }
-*/

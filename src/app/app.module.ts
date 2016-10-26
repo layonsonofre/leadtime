@@ -5,6 +5,7 @@ import { Carga } from '../pages/carga/carga';
 import { Descarga } from '../pages/descarga/descarga';
 import { Home } from '../pages/home/home';
 import { TransitTime } from '../pages/transitTime/transitTime';
+import { Login } from '../pages/login/login';
 import { DataService } from '../providers/data-service';
 
 @NgModule({
@@ -13,7 +14,8 @@ import { DataService } from '../providers/data-service';
     Carga,
     Descarga,
     Home,
-    TransitTime
+    TransitTime,
+    Login
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -24,7 +26,8 @@ import { DataService } from '../providers/data-service';
     Carga,
     Descarga,
     Home,
-    TransitTime
+    TransitTime,
+    Login
   ],
   providers: [DataService]
 })

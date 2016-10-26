@@ -9,37 +9,20 @@
 
 <ion-content padding>
   <h3>Indicadores</h3>
-
-
   <div *ngIf="indicadoresHome">
+    <ion-card [ngClass]="indicador-carga" (click)="gotoCarga()">
+        <p>{{indicadoresHome.indicadores[0].carga.quantidade}}   </p><br>
+        <p>Em carga</p>
+    </ion-card>
 
-    <button fab  (press)="showHint('Cadastro de ausência')" (click)="gotoCarga()" >
-      {{indicadoresHome.indicadores[0].carga.quantidade}}
-      <p>Em carga</p>
-      <ion-icon name="cloud-upload"></ion-icon>
-    </button>
+    <ion-card [ngClass]="indicador-descarga" (click)="gotoDescarga()">
+        <p>{{indicadoresHome.indicadores[0].descarga.quantidade}}   </p><br>
+        <p>Em descarga</p>
+    </ion-card>
 
-
-    <button fab  (press)="showHint('Cadastro de ausência')" (click)="gotoDescarga()" >
-      {{indicadoresHome.indicadores[0].descarga.quantidade}}
-      <p>Descarga</p>
-      <ion-icon name="cloud-upload"></ion-icon>
-    </button>
-
-    <button fab  (press)="showHint('Cadastro de ausência')" (click)="gotoTransitTime()" >
-      {{indicadoresHome.indicadores[0].transit.quantidade}}
-      <p>Transit Time</p>
-      <ion-icon name="car"></ion-icon>
-    </button>
+    <ion-card [ngClass]="indicador-transit" (click)="gotoTransitTime()">
+        <p>{{indicadoresHome.indicadores[0].transit.quantidade}}   </p><br>
+        <p>Transit Time</p>
+    </ion-card>
   </div>
-
-  <!--  <button menuClose ion-item (click)="openPage(Carga)">
-
-</button> -->
-
-<!--<p>
-<If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will show you the way.
-</p>-->
-
-<!-- <button ion-button secondary menuToggle>Toggle Menu</button> -->
 </ion-content>
