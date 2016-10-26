@@ -1,6 +1,6 @@
 @import '../../theme/icons';
 @import '../../theme/animations';
-carga {
+transitTime {
   .atrasado {
     @include card-background;
     background-color: map-get($colors, atrasado)!important;
