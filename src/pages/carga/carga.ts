@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { Modal, NavController, ViewController } from 'ionic-angular';
+import { Filtro } from '../filtro/filtro.ts'
 import { DataService } from '../../providers/data-service';
 
 @Component({
@@ -12,15 +13,25 @@ export class Carga {
   private cargasViagem: any;
   private cargasAguardando: any;
   public cargas: any;
+  public nav: any;
   public detailedViagem: Array<boolean> = [];
   public detailedAguardando: Array<boolean> = [];
 
-  constructor(public navCtrl: NavController, private dataService: DataService) {
+  constructor(private navCtrl: NavController, private dataService: DataService, private modal: Modal) {
     this.cargas = 'c_viagem';
+    this.nav = navCtrl;
   }
+
 
   ionViewDidLoad() {
     this.loadCargasViagem();
+  }
+
+  presentModal() {
+      let myModal = Modal.create(Filtro, {param: "something"});
+      console.log('myModal is ', myModal);
+      this.nav.present(myModal);
+      console.log("function being called");
   }
 
   loadCargasViagem() {

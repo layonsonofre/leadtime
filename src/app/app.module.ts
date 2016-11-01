@@ -6,6 +6,7 @@ import { Descarga } from '../pages/descarga/descarga';
 import { Home } from '../pages/home/home';
 import { TransitTime } from '../pages/transitTime/transitTime';
 import { Login } from '../pages/login/login';
+import { Filtro } from '../pages/filtro/filtro';
 import { DataService } from '../providers/data-service';
 
 @NgModule({
@@ -15,7 +16,8 @@ import { DataService } from '../providers/data-service';
     Descarga,
     Home,
     TransitTime,
-    Login
+    Login,
+    Filtro
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -27,7 +29,8 @@ import { DataService } from '../providers/data-service';
     Descarga,
     Home,
     TransitTime,
-    Login
+    Login,
+    Filtro
   ],
   providers: [DataService]
 })

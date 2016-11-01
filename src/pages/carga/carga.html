@@ -8,6 +8,7 @@
   <ion-toolbar>
     <ion-segment [(ngModel)]="cargas">
       <ion-segment-button value="c_viagem" (click)="loadCargasViagem()">
+        
         Viagem
       </ion-segment-button>
       <ion-segment-button value="c_aguardando" (click)="loadCargasAguardando()">
@@ -17,6 +18,16 @@
   </ion-toolbar>
 </ion-header>
 <ion-content padding>
+
+  <ion-card (click)='presentModal()' class='custom-card'>
+        <ion-card-header>
+            Sched. Accuracy
+        </ion-card-header>
+        <ion-card-content>
+            71%
+        </ion-card-content>
+  </ion-card>
+
   <div [ngSwitch]="cargas">
     <div *ngSwitchCase="'c_viagem'">
       <div *ngIf="cargasViagem">
