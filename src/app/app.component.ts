@@ -1,12 +1,12 @@
 import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform } from 'ionic-angular';
 import { StatusBar, Splashscreen } from 'ionic-native';
-
 import { Carga } from '../pages/carga/carga';
 import { Descarga } from '../pages/descarga/descarga';
 import { Home } from '../pages/home/home';
 import { TransitTime } from '../pages/transitTime/transitTime';
 import { Login } from '../pages/login/login';
+import { Filtro } from '../pages/filtro/filtro';
 
 @Component({
   templateUrl: 'app.html'
