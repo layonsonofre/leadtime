@@ -4,3 +4,13 @@
 @import "../pages/descarga/descarga";
 @import "../pages/home/home";
 @import "../pages/transitTime/transitTime";
+
+ion-header {
+  img.profile {
+    margin: 0 auto;
+    width: 60%;
+    height: 60%;
+    border-radius: 50%;
+    border: 2px solid #3c3c3c;
+  }
+}

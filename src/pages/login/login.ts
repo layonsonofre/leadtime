@@ -14,6 +14,7 @@ export class Login {
 
   public formularioInicial: any;
   public autenticado: false;
+  public error: any;
 
   constructor(public navCtrl: NavController, private dataService: DataService) {
     this.formularioInicial = 'login';
