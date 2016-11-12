@@ -1,9 +1,9 @@
 // http://ionicframework.com/docs/v2/theming/
 
-@import "../pages/carga/carga";
-@import "../pages/descarga/descarga";
-@import "../pages/home/home";
+@import "../theme/theme";
 @import "../pages/transitTime/transitTime";
+@import "../pages/home/home";
+@import "../pages/login/login";
 
 ion-header {
   img.profile {

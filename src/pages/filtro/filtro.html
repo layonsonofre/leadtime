@@ -1,5 +1,11 @@
-<ion-card class='popover'>
-    <ion-card-content>
-        Hello
-    </ion-card-content>
-</ion-card>
+<ion-navbar *navbar>
+  <ion-buttons start>
+    <button (click)="dismiss()" class="primary">
+      Cancelar
+    </button>
+  </ion-buttons>
+  <ion-title>Filtro</ion-title>
+</ion-navbar>
+<ion-content padding>
+  Opções de filtro
+</ion-content>

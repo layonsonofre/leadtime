@@ -1,17 +1,18 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavParams, ViewController } from 'ionic-angular';
 
-@Component ({
-  template: 'carga.html'
+@Component({
+  templateUrl: 'filtro.html',
+  selector: 'filtro'
 })
 export class Filtro {
 
-  private dumbData: number;
+  constructor(private params: NavParams, private viewCtrl: ViewController) {
+    console.log('nav params', params.get('param'));
+  }
 
-  constructor(private params: NavParams) {
-   console.log("constructor");
-   this.dumbData= 22;
-   console.log('Param:', params.get('param'));
- }
+  dismiss(data) {
+    this.viewCtrl.dismiss(data);
+  }
 
 }
