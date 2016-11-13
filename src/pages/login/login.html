@@ -1,85 +1,15 @@
-<ion-header>
-  <ion-navbar color="dark">
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
-    <ion-title>LeadTime</ion-title>
-  </ion-navbar>
-  <ion-toolbar>
-    <ion-segment [(ngModel)]="formularioInicial">
-      <ion-segment-button value="login" (click)="loadLogin()">
-        Login
-      </ion-segment-button>
-      <ion-segment-button value="cadastro" (click)="loadCadastro()">
-        Cadastro
-      </ion-segment-button>
-    </ion-segment>
-  </ion-toolbar>
-</ion-header>
-<ion-content>
-
-  <div [ngSwitch]="formularioInicial">
-    <div *ngSwitchCase="'login'">
-      <form (ngSubmit)="gotoHome()">
-        <ion-item>
-          <ion-label>Usuário </ion-label>
-          <ion-input type="text"></ion-input>
-        </ion-item>
-
-        <ion-item>
-          <ion-label>Senha</ion-label>
-          <ion-input type="password"></ion-input>
-        </ion-item>
-
-        <div padding>
-          <button ion-button type="submit">Login</button>
-        </div>
-
-      </form>
-    </div>
-
-    <div *ngSwitchCase="'cadastro'">
-      <form (ngSubmit)="gotoHome()">
-        <ion-item>
-          <ion-label>Nome </ion-label>
-          <ion-input type="text"></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-label>CPF/CPNPJ </ion-label>
-          <ion-input type="text"></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-label>Empresa </ion-label>
-          <ion-input type="text"></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-label>Site </ion-label>
-          <ion-input type="text"></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-label>Logradouro </ion-label>
-          <ion-input type="text"></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-label>Usuário </ion-label>
-          <ion-input type="text"></ion-input>
-        </ion-item>
-
-        <ion-item>
-          <ion-label>Senha</ion-label>
-          <ion-input type="password"></ion-input>
-        </ion-item>
-
-        <div padding>
-          <button ion-button type="submit">Login</button>
-        </div>
-
-      </form>
-    </div>
-  </div>
-
-  <div padding>
+<ion-content padding class="login">
+  <img class="logo" src="../../assets/img/logo-white.png">
+  <form (ngSubmit)="gotoHome()" class="login-form">
+    <ion-list>
+      <ion-item>
+        <ion-input type="text" placeholder="Usuário"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input type="password" placeholder="Senha"></ion-input>
+      </ion-item>
+    </ion-list>
+    <button ion-button type="submit" outline>Acessar</button>
     <p *ngIf="error" class="error">{{ error._body }}</p>
-  </div>
-
+  </form>
 </ion-content>

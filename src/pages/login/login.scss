@@ -1,6 +1,25 @@
 @import '../../theme/icons';
 @import '../../theme/animations';
 @import '../../theme/theme.scss';
-
 login {
+  .login {
+    text-align: center;
+    vertical-align: middle;
+    color: map-get($colors, light);
+    background: linear-gradient(to bottom right, map-get($colors, dark), map-get($colors, dark));
+    padding-top: 25vh;
+  }
+  button {
+    border: none;
+  }
+  img.logo {
+    margin: 0 auto;
+    max-width: 60%;
+    margin-top: 10vh;
+    margin-bottom: 5vh;
+  }
+  .login-form, ion-list, ion-item, input {
+      background: none;
+      border: none;
+  }
 }

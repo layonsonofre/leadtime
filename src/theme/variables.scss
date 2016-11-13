@@ -12,8 +12,6 @@
 
 $text-color:        #f8f8f8;
 $background-color:  #f8f8f8;
-$menu-md-background: #3c3c3c;
-
 
 // Named Color Variables
 // --------------------------------------------------
@@ -28,12 +26,13 @@ $colors: (
   secondary:  #8BC34A,
   atrasado:   #F44336,
   previsto:   #387B9F,
-  light:      #f4f4f4,
+  light:      #f8f8f8,
   dark:       #3C3C3C,
   favorite:   #69BB7B,
   indicadorCarga: #49E83E,
   indicadorDescarga: #FFD432,
-  indicadorTransitTime: #E84B30
+  indicadorTransitTime: #E84B30,
+  primary-darker: #186138
 );
 
 

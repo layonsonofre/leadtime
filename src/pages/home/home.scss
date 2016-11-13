@@ -1,52 +1,35 @@
+@import '../../theme/icons';
+@import '../../theme/animations';
+@import '../../theme/theme.scss';
 home {
-  .indicador-carga {
-    @include card-background;
-    background-color: map-get($colors, indicadorCarga)!important;
+  .menu-item {
+    font-size: 150%;
+    font-weight: lighter;
+    color: map-get($colors, primary);
   }
-
-  .indicador-descarga {
-    @include card-background;
-    background-color: map-get($colors, indicadorDescarga)!important;
+  .item,
+  .item-inner {
+    border: none!important;
   }
-
-  .indicador-transit {
-    @include card-background;
-    background-color: map-get($colors, indicadorTransitTime)!important;
+  ion-thumbnail > img {
+    margin-top: 25%;
+    margin-left: 25%;
+    width: 50%;
   }
-
-  .caminhao {
-    @include icon-caminhao-black;
-  }
-
-  ion-card {
-    padding: 0 !important;
-    display: flex;
-    .logo {
-      width: 40%;
-      height: inherit;
-      float: left;
-      overflow: hidden;
+  .perfil {
+    background: linear-gradient(to bottom right, map-get($colors, primary), map-get($colors, primary-darker));
+    color: map-get($colors, light);
+    .user {
+      font-size: 120%;
+      font-weight: bold;
+      text-align: center;
+    }
+    img {
+      margin: 0 auto;
+      width: 25%;
+      border-radius: 100%;
+      border: 2px solid rgba(255, 255, 255, 0.4);
       background-color: #fff;
-      box-shadow: 2px 0 15px rgba(0, 0, 0, 0.4);
-      padding: 5px;
-      vertical-align: middle;
     }
   }
-  ion-card-content {
-    width: 60%!important;
-    padding: 5px 5px 5px 10px !important;
-    position: relative;
-    float: right;
-    font-weight: bolder;
-    vertical-align: top;
-    font-size: 1.2rem!important;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
-    .minimized-info {
-      display: block;
-    }
-    .detailed-info {
-      display: none;
-    }
-  }
-
 }

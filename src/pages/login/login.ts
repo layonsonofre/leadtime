@@ -17,27 +17,15 @@ export class Login {
   public error: any;
 
   constructor(public navCtrl: NavController, private dataService: DataService) {
-    this.formularioInicial = 'login';
   }
 
   ionViewDidLoad() {
-    if(this.autenticado){
+    if (this.autenticado) {
       this.gotoHome();
-    }else{
-      this.loadLogin();
     }
   }
 
   public gotoHome() {
-    this.navCtrl.push(Home);
+    this.navCtrl.setRoot(Home);
   }
-
-  loadLogin() {
-    this.formularioInicial = 'login';
-  }
-
-  loadCadastro() {
-    this.formularioInicial = 'cadastro';
-  }
-
 }

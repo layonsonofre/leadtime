@@ -13,7 +13,6 @@ import { Filtro } from '../pages/filtro/filtro';
 })
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
-  //rootPage: any = Home;
   rootPage: any = Login;
   pages: Array<{title: string, component: any}>;
 
@@ -36,10 +35,6 @@ export class MyApp {
   }
 
   openPage(page) {
-    this.nav.setRoot(page.component);
+    this.nav.push(page.component);
   }
-
-  // openPage(page) {
-  //   this.nav.push(page);
-  // }
 }

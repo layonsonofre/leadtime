@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar color="light">
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
@@ -7,22 +7,36 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  <h3>Indicadores</h3>
-  <div *ngIf="indicadoresHome">
-    <ion-card [ngClass]="indicador-carga" (click)="gotoCarga()">
-        <p>{{indicadoresHome.indicadores[0].carga.quantidade}}   </p><br>
-        <p>Em carga</p>
-    </ion-card>
-
-    <ion-card [ngClass]="indicador-descarga" (click)="gotoDescarga()">
-        <p>{{indicadoresHome.indicadores[0].descarga.quantidade}}   </p><br>
-        <p>Em descarga</p>
-    </ion-card>
-
-    <ion-card [ngClass]="indicador-transit" (click)="gotoTransitTime()">
-        <p>{{indicadoresHome.indicadores[0].transit.quantidade}}   </p><br>
-        <p>Transit Time</p>
-    </ion-card>
-  </div>
+<ion-content>
+  <ion-list>
+    <ion-item class="perfil">
+      <ion-thumbnail item-center>
+        <img src="assets/img/carga.png">
+      </ion-thumbnail>
+      <h2 class="user">Hebertom G. Kogut</h2>
+    </ion-item>
+  </ion-list>
+  <ion-list>
+    <ion-item (click)="goto('carga')">
+      <ion-thumbnail item-left>
+        <img src="assets/img/carga.png">
+      </ion-thumbnail>
+      <h2 class="menu-item">Cargas</h2>
+      <ion-badge item-right *ngIf="indicadoresHome">{{indicadoresHome.carga.quantidade}}</ion-badge>
+    </ion-item>
+    <ion-item (click)="goto('descarga')">
+      <ion-thumbnail item-left>
+        <img src="assets/img/producer.png">
+      </ion-thumbnail>
+      <h2 class="menu-item">Descargas</h2>
+      <ion-badge item-right *ngIf="indicadoresHome">{{indicadoresHome.descarga.quantidade}}</ion-badge>
+    </ion-item>
+    <ion-item (click)="goto('transit')">
+      <ion-thumbnail item-left>
+        <img src="assets/img/transito.png">
+      </ion-thumbnail>
+      <h2 class="menu-item">Transit Time</h2>
+      <ion-badge item-right *ngIf="indicadoresHome">{{indicadoresHome.transit.quantidade}}</ion-badge>
+    </ion-item>
+  </ion-list>
 </ion-content>

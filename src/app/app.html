@@ -1,15 +1,14 @@
 <ion-menu [content]="content">
-  <ion-header>
-    <ion-toolbar>
-      <!-- <ion-title>Opções</ion-title> -->
-      <img class="profile" src="http://2.bp.blogspot.com/-YnlkCdnRE1I/VD7eVYfBSlI/AAAAAAAAALk/wZjNwUte9yY/s1600/cute%2Bgirl%2BProfile%2BPicture%2BFor%2BFacebook%2B2.jpg">
-    </ion-toolbar>
-  </ion-header>
-
-  <ion-content>
+  <ion-content class="menu">
+    <div class="perfil">
+      <h2>LeadTime</h2>
+    </div>
     <ion-list>
       <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)" right>
         {{p.title}}
+      </button>
+      <button menuClose ion-item (click)="openPage(logout)" right>
+        Sair
       </button>
     </ion-list>
   </ion-content>
