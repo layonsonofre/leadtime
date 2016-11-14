@@ -35,6 +35,10 @@ export class MyApp {
   }
 
   openPage(page) {
-    this.nav.push(page.component);
+    if (page.title === 'Início') {
+        this.nav.setRoot(page.component);
+    } else {
+      this.nav.push(page.component);
+    }
   }
 }
