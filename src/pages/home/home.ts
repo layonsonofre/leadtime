@@ -6,41 +6,40 @@ import { Descarga } from '../descarga/descarga';
 import { TransitTime } from '../transitTime/transitTime';
 
 @Component({
-  selector: 'home',
-  templateUrl: 'home.html',
-  providers: [DataService]
+   selector: 'home',
+   templateUrl: 'home.html',
+   providers: [DataService]
 })
 
 export class Home {
 
-  public home: any;
-  public indicadoresHome: any;
-  public indicadores: any;
+   public home: any;
+   public indicadoresHome: any;
+   public indicadores: any;
 
-  constructor(public navCtrl: NavController, private dataService: DataService) {
+   constructor(public navCtrl: NavController, private dataService: DataService) {
 
-  }
+   }
 
-  ionViewDidLoad() {
-    this.loadDadosHome();
-  }
+   ionViewDidLoad() {
+      this.loadDadosHome();
+   }
 
-  public goto(page) {
-    if (page === 'carga') {
-      this.navCtrl.push(Carga);
-    } else if (page === 'descarga') {
-      this.navCtrl.push(Descarga);
-    } else if (page === 'transit') {
-      this.navCtrl.push(TransitTime);
-    }
-  }
+   public goto(page) {
+      if (page === 'carga') {
+         this.navCtrl.push(Carga);
+      } else if (page === 'descarga') {
+         this.navCtrl.push(Descarga);
+      } else if (page === 'transit') {
+         this.navCtrl.push(TransitTime);
+      }
+   }
 
-  loadDadosHome() {
+   loadDadosHome() {
+      this.dataService.loadDadosHome().then(data => {
+         this.indicadoresHome = data[0].indicadores[0];
+      });
 
-    this.dataService.loadDadosHome().then(data => {
-      this.indicadoresHome = data[0].indicadores[0];
-    });
-
-  }
+   }
 
 }

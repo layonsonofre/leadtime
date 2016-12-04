@@ -1,157 +1,177 @@
 <ion-header>
-  <ion-navbar color="light">
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
-    <ion-title>Cargas</ion-title>
-    <button ion-button menuToggle>
-      <ion-icon name="search"></ion-icon>
-    </button>
-  </ion-navbar>
-  <ion-toolbar>
-    <ion-segment [(ngModel)]="cargas">
-      <ion-segment-button value="c_viagem" (click)="loadCargasViagem()">
-        Viagem
-      </ion-segment-button>
-      <ion-segment-button value="c_aguardando" (click)="loadCargasAguardando()">
-        Aguardando
-      </ion-segment-button>
-    </ion-segment>
-  </ion-toolbar>
+   <ion-navbar color="light">
+      <button ion-button menuToggle>
+         <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-title>Cargas</ion-title>
+      <button ion-button menuToggle>
+         <ion-icon name="search"></ion-icon>
+      </button>
+   </ion-navbar>
+   <ion-toolbar>
+      <ion-segment [(ngModel)]="cargas">
+         <ion-segment-button value="c_viagem" (click)="loadCargasViagem(null, false)">
+            Viagem
+         </ion-segment-button>
+         <ion-segment-button value="c_aguardando" (click)="loadCargasAguardando(null, false)">
+            Aguardando
+         </ion-segment-button>
+      </ion-segment>
+   </ion-toolbar>
 </ion-header>
 <ion-content padding>
 
-  <ion-card (click)='presentModal()' class='custom-card'>
-    <ion-card-header>
-      Sched. Accuracy
-    </ion-card-header>
-    <ion-card-content>
-      71%
-    </ion-card-content>
-  </ion-card>
+   <!--<ion-card (click)='presentModal()' class='custom-card'>
+   <ion-card-header>
+   Sched. Accuracy
+</ion-card-header>
+<ion-card-content>
+71%
+</ion-card-content>
+</ion-card>-->
 
-  <div [ngSwitch]="cargas">
-    <div *ngSwitchCase="'c_viagem'">
-      <div *ngIf="cargasViagem">
-        <div *ngFor="let viagem of cargasViagem.viagens, let i = index" class="card-wrapper">
-          <ion-card [ngClass]="viagem.status == 'ATRASADO' ? 'atrasado' : 'previsto'" (click)="detailedViagem[i] = !detailedViagem[i]" [class.detailed]="detailedViagem[i]">
-            <!-- <div class="logo" [ngStyle]="{'background': 'url(' + viagem.transportadora.logo + ') no-repeat center #FFFFFF'}"></div> -->
-            <div class="logo"></div>
+<div [ngSwitch]="cargas">
+   <div *ngSwitchCase="'c_viagem'">
+
+      <ion-refresher (ionRefresh)="loadCargasViagem($event, true)">
+         <ion-refresher-content
+            pullingIcon="arrow-dropdown"
+            pullingText="Deslize para atualizar"
+            refreshingSpinner="circles"
+            refreshingText="Atualizando...">
+         </ion-refresher-content>
+      </ion-refresher>
+
+   <div *ngIf="cargasViagem">
+      <div *ngFor="let viagem of cargasViagem.viagens, let i = index" class="card-wrapper">
+         <ion-card [ngClass]="viagem.status == 'ATRASADO' ? 'atrasado' : 'previsto'" (click)="detailedViagem[i] = !detailedViagem[i]" [class.detailed]="detailedViagem[i]">
+            <div class="logo" [ngStyle]="{'background': 'url(' + viagem.transportadora.logo + ') no-repeat center #FFFFFF'}"></div>
+            <!--<div class="logo"></div>-->
             <ion-card-content>
-              <div class="minimized-info">
-                <div class="info full chegada-prevista">
-                  {{ viagem.chegada_prevista }}
-                  <div class="help-text">Chegada prevista</div>
-                </div>
-                <div class="info half left placa">
-                  {{ viagem.placa }}
-                  <div class="help-text">Placa</div>
-                </div>
-                <div class="info half right romaneio">
-                  {{ viagem.romaneio }}
-                  <div class="help-text">Romaneio</div>
-                </div>
-              </div>
-              <div class="detailed-info">
-                <div class="info half left placa">
-                  {{ viagem.transportadora.nome_fantasia }}
-                  <div class="help-text">Transportadora</div>
-                </div>
-                <div class="info half right chegada-prevista">
-                  {{ viagem.chegada_prevista }}
-                  <div class="help-text">Chegada prevista</div>
-                </div>
-                <div class="info half left placa">
-                  {{ viagem.placa }}
-                  <div class="help-text">Placa</div>
-                </div>
-                <div class="info half right romaneio">
-                  {{ viagem.romaneio }}
-                  <div class="help-text">Romaneio</div>
-                </div>
-                <div class="info half left mercadoria">
-                  {{ viagem.mercadoria }}
-                  <div class="help-text">Mercadoria</div>
-                </div>
-                <div class="info half right pessoa">
-                  {{ viagem.motorista }}
-                  <div class="help-text">Motorista</div>
-                </div>
-                <div class="info half left origem">
-                  {{ viagem.municipio_origem }}
-                  <div class="help-text">Origem</div>
-                </div>
-                <div class="info half right destino">
-                  {{ viagem.municipio_destino }}
-                  <div class="help-text">Destino</div>
-                </div>
-              </div>
+               <div class="minimized-info">
+                  <div class="info full chegada-prevista">
+                     {{ viagem.chegada_prevista }}
+                     <div class="help-text">Chegada prevista</div>
+                  </div>
+                  <div class="info half left placa">
+                     {{ viagem.placa }}
+                     <div class="help-text">Placa</div>
+                  </div>
+                  <div class="info half right romaneio">
+                     {{ viagem.romaneio }}
+                     <div class="help-text">Romaneio</div>
+                  </div>
+               </div>
+               <div class="detailed-info">
+                  <div class="info half left placa">
+                     {{ viagem.transportadora.nome_fantasia }}
+                     <div class="help-text">Transportadora</div>
+                  </div>
+                  <div class="info half right chegada-prevista">
+                     {{ viagem.chegada_prevista }}
+                     <div class="help-text">Chegada prevista</div>
+                  </div>
+                  <div class="info half left placa">
+                     {{ viagem.placa }}
+                     <div class="help-text">Placa</div>
+                  </div>
+                  <div class="info half right romaneio">
+                     {{ viagem.romaneio }}
+                     <div class="help-text">Romaneio</div>
+                  </div>
+                  <div class="info half left mercadoria">
+                     {{ viagem.mercadoria }}
+                     <div class="help-text">Mercadoria</div>
+                  </div>
+                  <div class="info half right pessoa">
+                     {{ viagem.motorista }}
+                     <div class="help-text">Motorista</div>
+                  </div>
+                  <div class="info half left origem">
+                     {{ viagem.municipio_origem }}
+                     <div class="help-text">Origem</div>
+                  </div>
+                  <div class="info half right destino">
+                     {{ viagem.municipio_destino }}
+                     <div class="help-text">Destino</div>
+                  </div>
+               </div>
             </ion-card-content>
-          </ion-card>
-        </div>
+         </ion-card>
       </div>
-    </div>
+   </div>
+</div>
 
-    <!-- AGUARDANDO -->
-    <div *ngSwitchCase="'c_aguardando'">
-      <div *ngIf="cargasAguardando">
-        <div *ngFor="let viagem of cargasAguardando.viagens, let i = index" class="card-wrapper">
-          <ion-card [ngClass]="viagem.status == 'ATRASADO' ? 'atrasado' : 'previsto'" (click)="detailedAguardando[i] = !detailedAguardando[i]" [class.detailed]="detailedAguardando[i]">
+<!-- AGUARDANDO -->
+<div *ngSwitchCase="'c_aguardando'">
+
+   <ion-refresher (ionRefresh)="loadCargasAguardando($event, true)">
+      <ion-refresher-content
+         pullingIcon="arrow-dropdown"
+         pullingText="Deslize para atualizar"
+         refreshingSpinner="circles"
+         refreshingText="Atualizando...">
+      </ion-refresher-content>
+   </ion-refresher>
+
+   <div *ngIf="cargasAguardando">
+      <div *ngFor="let viagem of cargasAguardando.viagens, let i = index" class="card-wrapper">
+         <ion-card [ngClass]="viagem.status == 'ATRASADO' ? 'atrasado' : 'previsto'" (click)="detailedAguardando[i] = !detailedAguardando[i]" [class.detailed]="detailedAguardando[i]">
             <div class="logo" [ngStyle]="{'background': 'url(' + viagem.transportadora.logo + ') no-repeat center #FFFFFF'}"></div>
             <ion-card-content>
-              <div class="minimized-info">
-                <div class="info full chegada-prevista">
-                  {{ viagem.chegada_prevista }}
-                  <div class="help-text">Chegada prevista</div>
-                </div>
-                <div class="info half left placa">
-                  {{ viagem.placa }}
-                  <div class="help-text">Placa</div>
-                </div>
-                <div class="info half right romaneio">
-                  {{ viagem.romaneio }}
-                  <div class="help-text">Romaneio</div>
-                </div>
-              </div>
-              <div class="detailed-info">
-                <div class="info half left placa">
-                  {{ viagem.transportadora.nome_fantasia }}
-                  <div class="help-text">Transportadora</div>
-                </div>
-                <div class="info half right chegada-prevista">
-                  {{ viagem.chegada_prevista }}
-                  <div class="help-text">Chegada prevista</div>
-                </div>
-                <div class="info half left placa">
-                  {{ viagem.placa }}
-                  <div class="help-text">Placa</div>
-                </div>
-                <div class="info half right romaneio">
-                  {{ viagem.romaneio }}
-                  <div class="help-text">Romaneio</div>
-                </div>
-                <div class="info half left mercadoria">
-                  {{ viagem.mercadoria }}
-                  <div class="help-text">Mercadoria</div>
-                </div>
-                <div class="info half right pessoa">
-                  {{ viagem.motorista }}
-                  <div class="help-text">Motorista</div>
-                </div>
-                <div class="info half left origem">
-                  {{ viagem.municipio_origem }}
-                  <div class="help-text">Origem</div>
-                </div>
-                <div class="info half right destino">
-                  {{ viagem.municipio_destino }}
-                  <div class="help-text">Destino</div>
-                </div>
-              </div>
+               <div class="minimized-info">
+                  <div class="info full chegada-prevista">
+                     {{ viagem.chegada_prevista }}
+                     <div class="help-text">Chegada prevista</div>
+                  </div>
+                  <div class="info half left placa">
+                     {{ viagem.placa }}
+                     <div class="help-text">Placa</div>
+                  </div>
+                  <div class="info half right romaneio">
+                     {{ viagem.romaneio }}
+                     <div class="help-text">Romaneio</div>
+                  </div>
+               </div>
+               <div class="detailed-info">
+                  <div class="info half left placa">
+                     {{ viagem.transportadora.nome_fantasia }}
+                     <div class="help-text">Transportadora</div>
+                  </div>
+                  <div class="info half right chegada-prevista">
+                     {{ viagem.chegada_prevista }}
+                     <div class="help-text">Chegada prevista</div>
+                  </div>
+                  <div class="info half left placa">
+                     {{ viagem.placa }}
+                     <div class="help-text">Placa</div>
+                  </div>
+                  <div class="info half right romaneio">
+                     {{ viagem.romaneio }}
+                     <div class="help-text">Romaneio</div>
+                  </div>
+                  <div class="info half left mercadoria">
+                     {{ viagem.mercadoria }}
+                     <div class="help-text">Mercadoria</div>
+                  </div>
+                  <div class="info half right pessoa">
+                     {{ viagem.motorista }}
+                     <div class="help-text">Motorista</div>
+                  </div>
+                  <div class="info half left origem">
+                     {{ viagem.municipio_origem }}
+                     <div class="help-text">Origem</div>
+                  </div>
+                  <div class="info half right destino">
+                     {{ viagem.municipio_destino }}
+                     <div class="help-text">Destino</div>
+                  </div>
+               </div>
             </ion-card-content>
-          </ion-card>
-        </div>
+         </ion-card>
       </div>
-    </div>
+   </div>
+</div>
 
-  </div>
+</div>
 </ion-content>

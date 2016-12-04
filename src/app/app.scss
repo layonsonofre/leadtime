@@ -1,25 +1,32 @@
-// http://ionicframework.com/docs/v2/theming/
 @import "../theme/theme";
 @import "../pages/transitTime/transitTime";
 @import "../pages/home/home";
 @import "../pages/login/login";
+@import "../components/travel-progress/travel-progress.component";
 .menu {
-  background: linear-gradient(to bottom right, map-get($colors, primary), map-get($colors, primary-darker));
-  color: #fff;
-  .perfil {
-    padding-left: 20px;
-    margin-bottom: 20px;
-    h2 {
-      font-weight: lighter;
-      vertical-align: middle;
-    }
-  }
-  .item-inner,
-  button,
-  ion-item,
-  ion-list {
-    padding-left: 10px;
-    background: none;
-    border: none!important;
-  }
+   background: linear-gradient(to bottom right, map-get($colors, primary), map-get($colors, primary-darker));
+   color: #fff;
+   .perfil {
+      padding-left: 20px;
+      margin-bottom: 20px;
+      h2 {
+         font-weight: bold;
+         vertical-align: middle;
+      }
+   }
+   .item-inner,
+   button,
+   ion-item,
+   ion-list {
+      padding-left: 10px;
+      background: none;
+      border: none!important;
+      font-weight: bold;
+   }
+   position: relative;
+
+   .logout {
+      position: absolute;
+      bottom: 15px;
+   }
 }

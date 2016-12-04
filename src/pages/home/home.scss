@@ -2,20 +2,65 @@
 @import '../../theme/animations';
 @import '../../theme/theme.scss';
 home {
-  .menu-item {
-    font-size: 150%;
-    font-weight: lighter;
-    color: map-get($colors, primary);
-  }
-  .item,
-  .item-inner {
-    border: none!important;
-  }
-  ion-thumbnail > img {
-    margin-top: 25%;
-    margin-left: 25%;
-    width: 50%;
-  }
+   .main-menu {
+      // width: 80%;
+      margin: 0 auto;
+      // display: inline-block;
+      .menu-item {
+         height: 130px;
+         width: 130px;
+         display: inline-block;
+         position: relative;
+         margin: 10px 10px 10px 10px;
+         // border: 1px solid #3c3c3c;
+         .menu-label {
+            text-align: center;
+            position: absolute;
+            bottom: 0;
+            font-size: 150%;
+            font-weight: lighter;
+            color: map-get($colors, primary);
+            margin: 0 auto;
+            width: 100%;
+            z-index: 3;
+         }
+         .menu-badge {
+            // display: inline-block;
+            position: absolute;
+            top: 0;
+            right: 0;
+            z-index: 2;
+            // width: 30%;
+            border-radius: 0;
+            // box-shadow: 2px 2px 3px rgba(0, 0, 0, 40);
+         }
+         .menu-img {
+            position: absolute;
+            // display: none;
+            // vertical-align: middle;
+            width: 70%;
+            height: 70%;
+            margin-left: 15%;
+            margin-top: 15%;
+            // margin: 0 auto;
+            z-index: 1;
+         }
+      }
+   }
+  // .menu-item {
+  //   font-size: 150%;
+  //   font-weight: lighter;
+  //   color: map-get($colors, primary);
+  // }
+  // .item,
+  // .item-inner {
+  //   border: none!important;
+  // }
+  // ion-thumbnail > img {
+  //   margin-top: 25%;
+  //   margin-left: 25%;
+  //   width: 50%;
+  // }
   .perfil {
     background: linear-gradient(to bottom right, map-get($colors, primary), map-get($colors, primary-darker));
     color: map-get($colors, light);

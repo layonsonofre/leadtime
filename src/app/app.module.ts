@@ -8,6 +8,7 @@ import { TransitTime } from '../pages/transitTime/transitTime';
 import { Login } from '../pages/login/login';
 import { Filtro } from '../pages/filtro/filtro';
 import { DataService } from '../providers/data-service';
+import { TravelProgressComponent } from '../components/travel-progress/travel-progress.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { DataService } from '../providers/data-service';
     Home,
     TransitTime,
     Login,
-    Filtro
+    Filtro,
+    TravelProgressComponent
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -30,7 +32,8 @@ import { DataService } from '../providers/data-service';
     Home,
     TransitTime,
     Login,
-    Filtro
+    Filtro,
+    TravelProgressComponent
   ],
   providers: [DataService]
 })

@@ -1,42 +1,37 @@
 <ion-header>
-  <ion-navbar color="light">
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
-    <ion-title>LeadTime</ion-title>
-  </ion-navbar>
+   <ion-navbar color="light">
+      <button ion-button menuToggle>
+         <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-title>Lead Time</ion-title>
+   </ion-navbar>
 </ion-header>
 
 <ion-content>
-  <ion-list>
-    <ion-item class="perfil">
-      <ion-thumbnail item-center>
-        <img src="assets/img/carga.png">
-      </ion-thumbnail>
-      <h2 class="user">Hebertom G. Kogut</h2>
-    </ion-item>
-  </ion-list>
-  <ion-list>
-    <ion-item (click)="goto('carga')">
-      <ion-thumbnail item-left>
-        <img src="assets/img/carga.png">
-      </ion-thumbnail>
-      <h2 class="menu-item">Cargas</h2>
-      <ion-badge item-right *ngIf="indicadoresHome">{{indicadoresHome.carga.quantidade}}</ion-badge>
-    </ion-item>
-    <ion-item (click)="goto('descarga')">
-      <ion-thumbnail item-left>
-        <img src="assets/img/producer.png">
-      </ion-thumbnail>
-      <h2 class="menu-item">Descargas</h2>
-      <ion-badge item-right *ngIf="indicadoresHome">{{indicadoresHome.descarga.quantidade}}</ion-badge>
-    </ion-item>
-    <ion-item (click)="goto('transit')">
-      <ion-thumbnail item-left>
-        <img src="assets/img/transito.png">
-      </ion-thumbnail>
-      <h2 class="menu-item">Transit Time</h2>
-      <ion-badge item-right *ngIf="indicadoresHome">{{indicadoresHome.transit.quantidade}}</ion-badge>
-    </ion-item>
-  </ion-list>
+   <ion-list>
+      <ion-item class="perfil">
+         <ion-thumbnail item-center>
+            <img src="assets/img/carga.png">
+         </ion-thumbnail>
+         <h2 class="user">Hebertom G. Kogut</h2>
+      </ion-item>
+   </ion-list>
+
+   <div padding center class="main-menu">
+      <div class="menu-item" (click)="goto('carga')">
+         <ion-badge class="menu-badge" *ngIf="indicadoresHome">{{indicadoresHome.carga.quantidade}}</ion-badge>
+         <img class="menu-img" src="assets/img/carga.png">
+         <h2 class="menu-label">Cargas</h2>
+      </div>
+      <div class="menu-item" (click)="goto('descarga')">
+         <ion-badge class="menu-badge" *ngIf="indicadoresHome">{{indicadoresHome.descarga.quantidade}}</ion-badge>
+         <img class="menu-img" src="assets/img/producer.png">
+         <h2 class="menu-label">Descargas</h2>
+      </div>
+      <div class="menu-item" (click)="goto('transit')">
+         <ion-badge class="menu-badge" *ngIf="indicadoresHome">{{indicadoresHome.transit.quantidade}}</ion-badge>
+         <img class="menu-img" src="assets/img/transito.png">
+         <h2 class="menu-label">Transit Time</h2>
+      </div>
+   </div>
 </ion-content>

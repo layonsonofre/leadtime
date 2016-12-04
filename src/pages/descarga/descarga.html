@@ -4,13 +4,16 @@
       <ion-icon name="menu"></ion-icon>
     </button>
     <ion-title>Descargas</ion-title>
+    <button ion-button menuToggle>
+      <ion-icon name="search"></ion-icon>
+    </button>
   </ion-navbar>
   <ion-toolbar>
     <ion-segment [(ngModel)]="descargas">
-      <ion-segment-button value="d_previsao" (click)="loadDescargasPrevisao()">
+      <ion-segment-button value="d_previsao" (click)="loadDescargasPrevisao(null, false)">
         Previsão
       </ion-segment-button>
-      <ion-segment-button value="d_tempo" (click)="loadDescargasTempo()">
+      <ion-segment-button value="d_tempo" (click)="loadDescargasTempo(null, false)">
         Tempo
       </ion-segment-button>
     </ion-segment>
@@ -19,11 +22,21 @@
 <ion-content padding>
   <div [ngSwitch]="descargas">
     <div *ngSwitchCase="'d_previsao'">
+
+      <ion-refresher (ionRefresh)="loadDescargasPrevisao($event, true)">
+         <ion-refresher-content
+            pullingIcon="arrow-dropdown"
+            pullingText="Deslize para atualizar"
+            refreshingSpinner="circles"
+            refreshingText="Atualizando...">
+         </ion-refresher-content>
+      </ion-refresher>
+
       <div *ngIf="descargasPrevisao">
         <div *ngFor="let previsao of descargasPrevisao.previsao, let i = index" class="card-wrapper">
           <ion-card [ngClass]="previsao.status == 'ATRASADO' ? 'atrasado' : 'previsto'" (click)="detailedViagem[i] = !detailedViagem[i]" [class.detailed]="detailedViagem[i]">
-            <!-- <div class="logo" [ngStyle]="{'background': 'url(' + previsao.transportadora.logo + ') no-repeat center #FFFFFF'}"></div> -->
-            <div class="logo"></div>
+            <div class="logo" [ngStyle]="{'background': 'url(' + previsao.transportadora.logo + ') no-repeat center #FFFFFF'}"></div>
+            <!--<div class="logo"></div>-->
             <ion-card-content>
               <div class="minimized-info">
                 <div class="info full chegada-prevista">
@@ -81,6 +94,16 @@
 
     <!-- AGUARDANDO -->
     <div *ngSwitchCase="'d_tempo'">
+
+      <ion-refresher (ionRefresh)="loadDescargasTempo($event, true)">
+         <ion-refresher-content
+            pullingIcon="arrow-dropdown"
+            pullingText="Deslize para atualizar"
+            refreshingSpinner="circles"
+            refreshingText="Atualizando...">
+         </ion-refresher-content>
+      </ion-refresher>
+      
       <div *ngIf="descargasTempo">
         <div *ngFor="let tempo of descargasTempo.tempo, let i = index" class="card-wrapper">
           <ion-card [ngClass]="tempo.status == 'ATRASADO' ? 'atrasado' : 'previsto'" (click)="detailedAguardando[i] = !detailedAguardando[i]" [class.detailed]="detailedAguardando[i]">

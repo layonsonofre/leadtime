@@ -1,14 +1,14 @@
 <ion-content padding class="login">
   <img class="logo" src="../../assets/img/logo-white.png">
-  <form (ngSubmit)="gotoHome()" class="login-form">
-    <ion-list>
-      <ion-item>
+  <form (ngSubmit)="acessar(null)" class="login-form">
+    <!-- <ion-list>
+      <ion-item> -->
         <ion-input type="text" placeholder="Usuário"></ion-input>
-      </ion-item>
-      <ion-item>
+      <!--</ion-item>
+      <ion-item>-->
         <ion-input type="password" placeholder="Senha"></ion-input>
-      </ion-item>
-    </ion-list>
+      <!--</ion-item>
+    </ion-list>-->
     <button ion-button type="submit" outline>Acessar</button>
     <p *ngIf="error" class="error">{{ error._body }}</p>
   </form>

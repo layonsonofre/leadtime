@@ -5,40 +5,39 @@ import { Carga } from '../pages/carga/carga';
 import { Descarga } from '../pages/descarga/descarga';
 import { Home } from '../pages/home/home';
 import { TransitTime } from '../pages/transitTime/transitTime';
-import { Login } from '../pages/login/login';
-import { Filtro } from '../pages/filtro/filtro';
+//import { TravelProgress } from '../components/travel-progress/travel-progress.component';
+//import { Login } from '../pages/login/login';
 
 @Component({
-  templateUrl: 'app.html'
+   templateUrl: 'app.html'
 })
 export class MyApp {
-  @ViewChild(Nav) nav: Nav;
-  rootPage: any = Login;
-  pages: Array<{title: string, component: any}>;
+   @ViewChild(Nav) nav: Nav;
+   rootPage: any = Home;
+   pages: Array<{title: string, component: any}>;
 
-  constructor(public platform: Platform) {
-    this.initializeApp();
+   constructor(public platform: Platform) {
+      this.initializeApp();
+   }
 
-    this.pages = [
-      { title: 'Início', component: Home },
-      { title: 'Carga', component: Carga },
-      { title: 'Descarga', component: Descarga },
-      { title: 'Transit Time', component: TransitTime }
-    ];
-  }
+   initializeApp() {
+      this.platform.ready().then(() => {
+         StatusBar.styleDefault();
+         Splashscreen.hide();
+      });
+   }
 
-  initializeApp() {
-    this.platform.ready().then(() => {
-      StatusBar.styleDefault();
-      Splashscreen.hide();
-    });
-  }
-
-  openPage(page) {
-    if (page.title === 'Início') {
-        this.nav.setRoot(page.component);
-    } else {
-      this.nav.push(page.component);
-    }
-  }
+   openPage(page) {
+      if (page === 'inicio') {
+         this.nav.setRoot(Home);
+      } else if (page === 'cargas'){
+         this.nav.push(Carga);
+      } else if (page === 'descargas'){
+         this.nav.push(Descarga);
+      } else if (page === 'transit'){
+         this.nav.push(TransitTime);
+      } else if (page === 'logout'){
+         //this.nav.push(Carga);
+      }
+   }
 }
