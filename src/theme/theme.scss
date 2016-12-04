@@ -1,6 +1,9 @@
 @import './icons';
 @import './animations';
 
+html {
+   font-size: 10px;
+}
 .atrasado {
    @include card-background;
    background-color: map-get($colors, atrasado)!important;

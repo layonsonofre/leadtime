@@ -2,7 +2,6 @@
 @import "../pages/transitTime/transitTime";
 @import "../pages/home/home";
 @import "../pages/login/login";
-@import "../components/travel-progress/travel-progress.component";
 .menu {
    background: linear-gradient(to bottom right, map-get($colors, primary), map-get($colors, primary-darker));
    color: #fff;

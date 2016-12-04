@@ -1,20 +1,18 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, ToastController } from 'ionic-angular';
 import { DataService } from '../../providers/data-service';
-import { TravelProgressComponent } from '../../components/travel-progress/travel-progress.component';
 
 @Component({
    templateUrl: 'transitTime.html',
    selector: 'transitTime',
-   providers: [DataService],
-   entryComponents: [TravelProgressComponent]
+   providers: [DataService]
 })
 
 export class TransitTime {
    public transitTime: any;
    public detailedViagem: Array<boolean> = [];
 
-   constructor(public navCtrl: NavController, private dataService: DataService) {
+   constructor(public navCtrl: NavController, private dataService: DataService, private toast: ToastController) {
 
    }
 
@@ -34,5 +32,15 @@ export class TransitTime {
          //console.log(this.transitTime.transitTime);
       });
    }
+
+   show(message: string): void {
+      this.toast.create(
+         {
+            message: message,
+            duration: 2500
+         }
+      ).present();
+   }
+
 
 }

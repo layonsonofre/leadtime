@@ -5,7 +5,6 @@ import { Carga } from '../pages/carga/carga';
 import { Descarga } from '../pages/descarga/descarga';
 import { Home } from '../pages/home/home';
 import { TransitTime } from '../pages/transitTime/transitTime';
-//import { TravelProgress } from '../components/travel-progress/travel-progress.component';
 //import { Login } from '../pages/login/login';
 
 @Component({

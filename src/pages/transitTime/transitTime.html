@@ -10,88 +10,100 @@
 
 
    <ion-refresher (ionRefresh)="loadTransitTime($event, true)">
-         <ion-refresher-content
-         pullingIcon="arrow-dropdown"
-         pullingText="Deslize para atualizar"
-         refreshingSpinner="circles"
-         refreshingText="Atualizando...">
-      </ion-refresher-content>
-   </ion-refresher>
+      <ion-refresher-content
+      pullingIcon="arrow-dropdown"
+      pullingText="Deslize para atualizar"
+      refreshingSpinner="circles"
+      refreshingText="Atualizando...">
+   </ion-refresher-content>
+</ion-refresher>
 
-   <!-- <travel-progress></travel-progress> -->
-   <travel-progress from="Cidade Origem" [value]="10" [to]="'Cidade Destino'"></travel-progress>
-
-   <div *ngIf="transitTime">
-      <div *ngFor="let transit of transitTime.transitTime, let i = index" class="card-wrapper">
-         <ion-card [ngClass]="transit.status == 'ATRASADO' ? 'atrasado' : 'previsto'" (click)="detailedViagem[i] = !detailedViagem[i]" [class.detailed]="detailedViagem[i]">
-            <div class="logo" [ngStyle]="{'background': 'url(' + transit.transportadora.logo + ') no-repeat center #FFFFFF'}"></div>
-            <!-- <div class="logo"></div> -->
-            <ion-card-content>
-               <div class="minimized-info">
-                  <div class="info full chegada-prevista">
-                     {{ transit.direcao }}
-                     <div class="help-text">Direção</div>
+<div *ngIf="transitTime">
+   <div *ngFor="let transit of transitTime.transitTime, let i = index" class="card-wrapper">
+      <ion-card [ngClass]="transit.status == 'ATRASADO' ? 'atrasado' : 'previsto'" (click)="detailedViagem[i] = !detailedViagem[i]" [class.detailed]="detailedViagem[i]" (press)="show('Progresso: ' + transit.transitTime + '% - Há 2 horas estava em Manaus')" >
+         <!-- <div class="logo" [ngStyle]="{'background': 'url(' + transit.transportadora.logo + ') no-repeat center #FFFFFF'}"></div> -->
+         <!-- <div class="logo"></div> -->
+         <ion-card-content>
+            <div class="minimized-info">
+               <div class="travel-progress">
+                  <div class="from">
+                     <div class="label">{{transit.municipio_origem}}</div>
                   </div>
-                  <div class="info full chegada-prevista">
-                     {{ transit.transitTime }}
-                     <div class="help-text">Transit Time</div>
+                  <div class="progress-wrapper">
+                     <div class="total"></div>
+                     <div class="marker" [ngStyle]="{'margin-left': transit.transitTime + '%'}">
+                     </div>
+                     <div class="progress" [ngStyle]="{'width': transit.transitTime + '%'}"></div>
                   </div>
-                  <div class="info half right placa">
-                     {{ transit.placa }}
-                     <div class="help-text">Placa</div>
-                  </div>
-                  <div class="info half right chegada-prevista">
-                     {{ transit.romaneio }}
-                     <div class="help-text">Romaneio</div>
-                  </div>
-                  <div class="info half right motorista">
-                     {{ transit.motorista }}
-                     <div class="help-text">Motorista</div>
+                  <div class="to">
+                     <div class="label">{{transit.municipio_destino}}</div>
                   </div>
                </div>
-               <div class="detailed-info">
-                  <div class="info half left placa">
-                     {{ transit.transportadora.nome_fantasia }}
-                     <div class="help-text">Transportadora</div>
+               <div class="info full chegada-prevista">
+                  {{ transit.chegada_prevista }}
+                  <div class="help-text">Chegada prevista</div>
+               </div>
+               <div class="info half left placa">
+                  {{ transit.placa }}
+                  <div class="help-text">Placa</div>
+               </div>
+               <div class="info half right romaneio">
+                  {{ transit.romaneio }}
+                  <div class="help-text">Romaneio</div>
+               </div>
+            </div>
+            <div class="detailed-info">
+               <div class="travel-progress">
+                  <div class="from">
+                     <div class="label">{{transit.municipio_origem}}</div>
                   </div>
-                  <div class="info half right chegada-prevista">
-                     {{ transit.chegada_prevista }}
-                     <div class="help-text">Chegada prevista</div>
+                  <div class="progress-wrapper">
+                     <div class="total"></div>
+                     <div class="marker" (press)="show('Progresso: ' + transit.transitTime + '% - Há 2 horas estava em Manaus')" [ngStyle]="{'margin-left': transit.transitTime + '%'}">
+                     </div>
+                     <div class="progress" [ngStyle]="{'width': transit.transitTime + '%'}"></div>
                   </div>
-                  <div class="info half left placa">
-                     {{ transit.placa }}
-                     <div class="help-text">Placa</div>
-                  </div>
-                  <div class="info half right romaneio">
-                     {{ transit.romaneio }}
-                     <div class="help-text">Romaneio</div>
-                  </div>
-                  <div class="info full chegada-prevista">
-                     {{ transit.direcao }}
-                     <div class="help-text">Chegada prevista</div>
-                  </div>
-                  <div class="info full chegada-prevista">
-                     {{ transit.transitTime }}
-                     <div class="help-text">Chegada prevista</div>
-                  </div>
-                  <div class="info half left mercadoria">
-                     {{ transit.mercadoria }}
-                     <div class="help-text">Mercadoria</div>
-                  </div>
-
-                  <div class="info half left origem">
-                     {{ transit.municipio_origem }}
-                     <div class="help-text">Origem</div>
-                  </div>
-                  <div class="info half right destino">
-                     {{ transit.municipio_destino }}
-                     <div class="help-text">Destino</div>
+                  <div class="to">
+                     <div class="label">{{transit.municipio_destino}}</div>
                   </div>
                </div>
-            </ion-card-content>
-         </ion-card>
-      </div>
+               <div class="info half left placa">
+                  {{ transit.transportadora.nome_fantasia }}
+                  <div class="help-text">Transportadora</div>
+               </div>
+               <div class="info half right chegada-prevista">
+                  {{ transit.chegada_prevista }}
+                  <div class="help-text">Chegada prevista</div>
+               </div>
+               <div class="info half left placa">
+                  {{ transit.placa }}
+                  <div class="help-text">Placa</div>
+               </div>
+               <div class="info half right romaneio">
+                  {{ transit.romaneio }}
+                  <div class="help-text">Romaneio</div>
+               </div>
+               <div class="info half left mercadoria">
+                  {{ transit.mercadoria }}
+                  <div class="help-text">Mercadoria</div>
+               </div>
+               <div class="info half right pessoa">
+                  {{ transit.motorista }}
+                  <div class="help-text">Motorista</div>
+               </div>
+               <div class="info half left origem">
+                  {{ transit.municipio_origem }}
+                  <div class="help-text">Origem</div>
+               </div>
+               <div class="info half right destino">
+                  {{ transit.municipio_destino }}
+                  <div class="help-text">Destino</div>
+               </div>
+            </div>
+         </ion-card-content>
+      </ion-card>
    </div>
+</div>
 
 
 </ion-content>
