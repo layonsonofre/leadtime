@@ -10,7 +10,7 @@ import { DataService } from '../../providers/data-service';
 })
 
 export class Carga {
-   private cargasViagem: any;
+   private cargasViagem: any = null;
    private cargasAguardando: any;
    public cargas: any;
    public nav: any;
